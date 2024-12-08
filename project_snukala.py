@@ -40,11 +40,11 @@ if uploaded_file and spark:
 
             # Preprocessing
             data = data.na.drop()
-            data = data.withColumn("invoice_date", to_date(col("invoice_date"), "d/M/yyyy")) \\
-                       .withColumn("age", col("age").cast("integer")) \\
-                       .withColumn("quantity", col("quantity").cast("integer")) \\
-                       .withColumn("price", col("price").cast("float")) \\
-                       .withColumn("year", year(col("invoice_date"))) \\
+            data = data.withColumn("invoice_date", to_date(col("invoice_date"), "d/M/yyyy")) \
+                       .withColumn("age", col("age").cast("integer")) \
+                       .withColumn("quantity", col("quantity").cast("integer")) \
+                       .withColumn("price", col("price").cast("float")) \
+                       .withColumn("year", year(col("invoice_date"))) \
                        .withColumn("month", month(col("invoice_date")))
 
             st.write("Data after Preprocessing:", data.limit(5).toPandas())
