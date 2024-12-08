@@ -1,5 +1,11 @@
 import os
 import streamlit as st
+# Patch LooseVersion for Streamlit Community Cloud compatibility
+try:
+    from distutils.version import LooseVersion
+except ImportError:
+    from packaging.version import Version as LooseVersion
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, to_date, year, month
 from pyspark.ml.feature import VectorAssembler, StandardScaler, StringIndexer
@@ -24,6 +30,7 @@ def initialize_spark():
     except Exception as e:
         st.error(f"Error initializing Spark: {e}")
         return None
+
 
 spark = initialize_spark()
 
