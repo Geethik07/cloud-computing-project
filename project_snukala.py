@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, to_date, year, month
 from pyspark.ml.feature import VectorAssembler, StandardScaler, StringIndexer
